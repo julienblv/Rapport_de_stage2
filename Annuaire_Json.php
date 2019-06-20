@@ -62,16 +62,22 @@
 
 <?php
 var_dump(isset($_POST['jason']));
-//ouverture et possibilité de modification du fichier en format JSON//
+
     if(isset($_POST['jason'])){
+
+//ouverture  du fichier en format JSON//
+        $json= file_get_contents("Numeros_importants.json");
+
+        var_dump(json_decode($json));
       
+//possibilité de modification//
         $monJson = file_get_contents("Numeros_importants.json");
         $monJson = json_decode($js, true);
-
+        var_dump(json_decode($monJson));
         $monJson = fopen('Numeros_importants.json','r+');
         fclose('Numeros_importants.json');
 
-        echo "fck";
+        
 
       
     }
