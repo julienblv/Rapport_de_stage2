@@ -38,7 +38,7 @@
             <div class="dropdown">
                 <button class="dropbtn">Blavette</button>
                 <div class="dropdown-content">
-                    <a href="localhost/Dossier Php/Cpam_CPA/Modification_Annuaire.php">modifier</a>
+                    <a href="Liste des contacts non modifiable.html">modifier</a>
                     <a href="">signaler un probleme</a>
                 </div>
             </div>
@@ -72,9 +72,12 @@ var_dump(isset($_POST['jason']));
         fclose('Numeros_importants.json');
 
         echo "fck";
+
+      
     }
 
 ?>
+
 
 
 
