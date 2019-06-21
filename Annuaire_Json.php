@@ -1,9 +1,15 @@
+
+
 <!DOCTYPE html>
 <html lang="fr">
+<form method='POST' action= <?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> >
+</form>
+<?php
 
-<head>
-    
-<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
+echo
+"<head>
+   
     
 </head>
 
@@ -16,7 +22,7 @@
 
 <label>Vôtre CPAM :</label>
 <select>
-    <option value="">--Choisissez une option--</option>
+    <option value=''>--Choisissez une option--</option>
     <option> Haute-Garonne</option>
     <option> Tarn </option>
     <option> Aveyron </option>
@@ -25,8 +31,8 @@
 
 
 <!--Tableau déroulant -->
-<div style="margin-top:100px">
-<table border="1">
+<div style='margin-top:100px'>
+<table border='1'>
     <tr>
         <td>nom</td>
         <td>prénom</td>
@@ -35,11 +41,11 @@
     </tr>
     <tr>
         <td>
-            <div class="dropdown">
-                <button class="dropbtn">Blavette</button>
-                <div class="dropdown-content">
-                    <a href="Liste des contacts non modifiable.html">modifier</a>
-                    <a href="">signaler un probleme</a>
+            <div class='dropdown'>
+                <button class='dropbtn'>Blavette</button>
+                <div class='dropdown-content'>
+                    <a href='Liste des contacts non modifiable.html'>modifier</a>
+                    <a href=''>signaler un probleme</a>
                 </div>
             </div>
         </td>
@@ -54,13 +60,7 @@
 
 <!--mise en place d'un boutton action qui renvoies vers les scripts Json-->
 
-<input type = "submit" style="margin-top :100px" name = "jason">
-
-
-</form>
-
-
-<?php
+<input type = 'submit' style='margin-top :100px' name = 'jason'>";
 var_dump(isset($_POST['jason']));
 
     if(isset($_POST['jason'])){
