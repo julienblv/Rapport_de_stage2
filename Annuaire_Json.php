@@ -19,7 +19,7 @@
     <option value="">--Choisissez une option--</option>
     <option> Haute-Garonne</option>
     <option> Tarn </option>
-    <option> Aveiron </option>
+    <option> Aveyron </option>
     <option> Picardie</option>
 </select>
 
@@ -52,7 +52,7 @@
 </table>
 </div>
 
-<!--mise en place d'un boutton action qui renvoies vers la tableau généré par le script Json-->
+<!--mise en place d'un boutton action qui renvoies vers les scripts Json-->
 
 <input type = "submit" style="margin-top :100px" name = "jason">
 
@@ -69,18 +69,99 @@ var_dump(isset($_POST['jason']));
         $json= file_get_contents("Numeros_importants.json");
 
         var_dump(json_decode($json));
+
+
+
+
       
-//possibilité de modification//
-        $monJson = file_get_contents("Numeros_importants.json");
-        $monJson = json_decode($js, true);
-        var_dump(json_decode($monJson));
-        $monJson = fopen('Numeros_importants.json','r+');
-        fclose('Numeros_importants.json');
+//possibilité de modification////////////////////////////////////////////
+    //     $monJson = file("Numeros_importants.json");
+    //     for($i;$i<count($monJson);$i++)
+    //     {
+    //         $enregistrement[$i]strtok($monJson[$i]," /n/t");
+    //         echo "<font color='blue'>".$enregistrement[$i]."</font><br>";
+    //     }
+        
+
+    //     if(!$valeur)
+    //     {
+    //         echo=
+    //         "<form method='post' action=''>
+    //         <b>Copier/coller l'enregistrement à modifier</b> <input type='text name ='valeur' size='55'><br>
+    //         <b>modifier l'enregistrement ci-dessus : </b> <input type='text' name='modif' size='55'><br>
+    //         <input type = 'submit'>
+    //         </form>";
+    //     }
+
+    //     if($modif){
+    //         echo "<br><b>fichier modifié</b><br>";
+    //             for($i=0);$i<count(($lecture));$i++)
+    //             {
+    //                 $enregistrement[$i]=strtok($lecture[$i],"\n");
+    //                     if(prog_match("/$valeur/",$enregistrement[$i]))
+    //                     {$enregistrement[$i]=$modif;}
+    //                             if($enregistrement[$i] !="")
+    //                             { $new_enreg.$enregistrement[$i]."\n";
+    //                                 echo $enregistrement[$i]."<br>"; }
+    //                     }
+
+    //             }
+    //     }
+
+    //     $monJson=fopen("Numeros_importants.json","u+");
+    //     fwrite($monJson,$new_enreg);
+    //     fclose($monJson);
+    // }
+
+
+/////////////////////////////////////////////////////////////////////////////////:
+
+
+
+
+
+//( tentative ) affichage sous forme de tableau//
+        $Tab_JSon=json_decode($monJson,true);
+        echo "<table>";
+            foreach($result as $R=>$D){
+                echo"<tr id='Tr_".$R."'>";
+            foreach($D as $key=>$Value){
+                echo"<td id='Td_".$R."_".$key."'>".$Value."</td>";
+            }
+            echo"</tr>";
+        }
+        echo "</table>";
+
+
+
+        $monJson = fopen("Numeros_importants.json","r+");
+        $monJson = fclose('Numeros_importants.json');
 
         
 
       
     }
+
+
+
+//connection à la base de données 
+
+
+try {
+    $user="root";
+    $pass="";
+    $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
+    foreach($dbh->query('SELECT * from annuaire_comite_alerte') as $row) {
+        print_r($row);
+        echo "<br>";
+    }
+    $dbh = null;
+} catch (PDOException $e) {
+    print "Erreur !: " . $e->getMessage() . "<br/>";
+    die();
+}
+
+
 
 ?>
 
