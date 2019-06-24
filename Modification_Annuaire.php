@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
-<meta charset="utf-8">
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 
 <head>
 
@@ -19,17 +19,33 @@
     $pass="";
     $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
     
-   $req=$dbh->query("SELECT nom FROM annuaire_comite_alerte");
+   $req=$dbh->query("SELECT * FROM annuaire_comite_alerte");
    echo "<table border='1'>
     <tr>
+    Indicateur des colonnes :
     <td>Nom</td>
-    </tr>";
+    <td>Batiment</td>
+    <td>Etage</td>
+    <td>Portable</td>
+    <td>Fixe</td>
+    </tr>
+    </br>
+    </br>
+    Indicateur des lignes: "
+     ;
     while($resultat = $req->fetch()){
         
     echo "<table border='1'>
     
     <tr>
     <td>".$resultat['nom']."</td>
+    <td>".$resultat['batiment']."</td>
+    <td>".$resultat['etage']."</td>
+    <td>".$resultat['portable']."</td>
+    <td>".$resultat['fixe']."</td>
+    
+    
+    
     
     </tr>
     </talbe>" ;
