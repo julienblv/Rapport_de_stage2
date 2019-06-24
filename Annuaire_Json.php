@@ -44,12 +44,13 @@ echo
         <td>
             <div class='dropdown'>
                 <button class='dropbtn' name = 'redir' >Blavette</button>
-                <div class='dropdown-content'>
-                    <a href='Liste des contacts non modifiable.html'>modifier</a>";
+                <div class='dropdown-content'>";
 
-                    echo
-                    "<a href=".header('Location: Modification_Annuaire.php')." >signaler un probleme</a>
-                </div>
+                    echo "<a href=''></a>";
+    ?>
+                   <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php">Liste Complète ?</a></li>
+   <?php               
+               echo "</div>
             </div>
         </td>
 

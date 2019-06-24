@@ -8,7 +8,16 @@
 
 <h1> CPAM PCA </h1>
 <h3>Modification_Annuaire</h3>
-        
+
+
+<form>
+
+<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php"> Retour à l'accueuil ?</a></li>
+<br/>
+<br>
+</form>
+
+
     </tr>
 </table>
 
@@ -54,7 +63,6 @@
 
 
 ?>
-
 
 
 </body>
