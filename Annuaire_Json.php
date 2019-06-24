@@ -45,8 +45,10 @@ echo
             <div class='dropdown'>
                 <button class='dropbtn' name = 'redir' >Blavette</button>
                 <div class='dropdown-content'>
-                    <a href='Liste des contacts non modifiable.html'>modifier</a>
-                    <a href='' >signaler un probleme</a>
+                    <a href='Liste des contacts non modifiable.html'>modifier</a>";
+
+                    echo
+                    "<a href=".header('Location: Modification_Annuaire.php')." >signaler un probleme</a>
                 </div>
             </div>
         </td>
@@ -67,21 +69,13 @@ var_dump(isset($_POST['jason']));
     if(isset($_POST['jason'])){
 
 //ouverture  du fichier en format JSON//
-        $json= file_get_contents("Numeros_importants.json");
+        $json= file_get_contents("Nueros_importants.json");
 
 
 
 
         var_dump(json_decode($json));
 
-        
-        if(!isset($button)){
-        header('Location: Modification_Annuaire.php');
-        exit();
-        }
-        else{
-        
-        }
 
 
       
