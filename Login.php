@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+<form method='POST' action= <?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> >
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 <head>
 
@@ -12,31 +13,79 @@
 
 <div>
 Login:
-<input type = 'txtbox'>
+<input type = 'txtbox' id='login'>
 </div>
 
 <div>
 Password:
-<input type = 'password'>
-    <input type='conf_pass'>
+<input type = 'password'id='mdp'>
 </div>
 
+<input type = 'button' value="connexion" style='margin-top :100px' id = 'co'>
 
-<form>
-
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php"> Connexion </a></li>
-<br/>
-<br>
-</form>
-
-
-    </tr>
+</tr>
 </table>
 
-
 <?php
+// ---------------------------------------------Codes D'accès---------------------------
+//         User :              Login: utilisateur          Password: malade
+//         Admin :             Login: administrateur       Password: guerit
+// -------------------------------------------------------------------------------------
 
 
+var_dump($_POST['co']);
+
+
+if(isset($_POST['co'])){$
+
+    //Partie Utilisateur 
+
+
+   if(isset($_POST['login']) AND $_POST['login'] == "utilisateur"){
+    if(isset($_POST['mdp']) AND $_POST['mdp'] == "malade"){
+        echo"connexion en cours";
+        sleep(1);
+        echo"3";
+        sleep(1);
+        echo"2";
+        sleep(1);
+        echo"1";
+        sleep(1);
+        echo"Bravo vous êtes connecté en tant qu'Utilisateur vous pouvez maintenant accéder au site en cliquand ici :</br>
+        
+        
+        <form>
+        <li><a href='http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php'> Connexion </a></li>
+        <br/>
+        <br>
+        </form>";
+
+
+        //Partie Admin
+
+        if(isset($_POST['login']) AND $_POST['login'] == "administrateur"){
+            if(isset($_POST['mdp']) AND $_POST['mdp'] == "guerit"){
+                echo"connexion en cours";
+                sleep(1);
+                echo"3";
+                sleep(1);
+                echo"2";
+                sleep(1);
+                echo"1";
+                sleep(1);
+                echo"Bravo vous êtes connecté en tant qu'Administrateur vous pouvez maintenant accéder au site en cliquand ici :</br>
+                
+                
+                <form>
+                <li><a href='http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php'> Connexion </a></li>
+                <br/>
+                <br>
+                </form>";
+
+        
+    }
+}
+}
 
 ?>
 

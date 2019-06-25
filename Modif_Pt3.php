@@ -67,21 +67,19 @@ Selectionnez l'id de la personne à supprimer:
 
    if (isset($_POST['nom']!=''){
        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (nom) VALUES ('$nom')");
-
    }
-   else if (isset($_POST['batiment'])!=''){
-    $req=$dbh->query("INSERT INTO annuaire_comite_alerte (batiment) VALUES ('$batiment')");
-
-   }
+   if (isset($_POST['batiment'])!=''){
+        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (batiment) VALUES ('$batiment')");
+    }
    else if (isset($_POST['etage']!='')){
-    $req=$dbh->query("INSERT INTO annuaire_comite_alerte (etage) VALUES ('$etage')");
+        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (etage) VALUES ('$etage')");
 
    }
    else if (isset($_POST['portable']!='')){
-    $req=$dbh->query("INSERT INTO annuaire_comite_alerte (portable) VALUES ('$portable')");
+        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (portable) VALUES ('$portable')");
    }
    else if (isset($_POST['fixe']!='')){
-    $req=$dbh->query("INSERT INTO annuaire_comite_alerte (fixe) VALUES ('$fixe')");
+        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (fixe) VALUES ('$fixe')");
    }
 
 
