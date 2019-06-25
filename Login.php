@@ -17,7 +17,8 @@ Login:
 
 <div>
 Password:
-<input type = 'txtbox'>
+<input type = 'password'>
+    <input type='conf_pass'>
 </div>
 
 

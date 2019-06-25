@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 
 <head>
-
+</head>
 <body>
 
 <h1> CPAM PCA </h1>
@@ -40,26 +41,23 @@
     </tr>
     </br>
     </br>
-    Indicateur des lignes: "
-     ;
+    Indicateur des lignes: 
+    
+    </table>" ;
     while($resultat = $req->fetch()){
         
     echo "<table border='1'>
-    
     <tr>
-    <td>".$resultat['nom']."</td>
-    <td>".$resultat['batiment']."</td>
-    <td>".$resultat['etage']."</td>
-    <td>".$resultat['portable']."</td>
-    <td>".$resultat['fixe']."</td>
+    <td><a href='http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php'>".$resultat['nom']."</td></a>
+    <td><a href='http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php'>".$resultat['batiment']."</td></a>
+    <td><a href='http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php'>".$resultat['etage']."</td></a>
+    <td><a href='http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php'>".$resultat['portable']."</td></a>
+    <td><a href='http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php'>".$resultat['fixe']."</td></a>
+    </tr>";
     
-    
-    
-    
-    </tr>
-    </talbe>" ;
     }
 
+    echo "</table>";
 
 
 ?>
@@ -68,7 +66,7 @@
 </body>
 
 
-</head>
+
 
 
 </html>

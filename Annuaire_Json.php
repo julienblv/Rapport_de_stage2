@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="fr">
+<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 <form method='POST' action= <?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> >
 </form>
 <?php
