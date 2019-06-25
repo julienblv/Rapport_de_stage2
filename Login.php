@@ -33,16 +33,17 @@ Password:
 // -------------------------------------------------------------------------------------
 
 
-var_dump($_POST['co']);
+var_dump(isset($_POST['co']));
+$co=$_POST['co'];
 
 
-if(isset($_POST['co'])){$
+if($_POST['co']){
 
     //Partie Utilisateur 
 
 
-   if(isset($_POST['login']) AND $_POST['login'] == "utilisateur"){
-    if(isset($_POST['mdp']) AND $_POST['mdp'] == "malade"){
+   if($_POST['login']== "utilisateur"){
+    if($_POST['mdp'] == "malade"){
         echo"connexion en cours";
         sleep(1);
         echo"3";
@@ -59,12 +60,13 @@ if(isset($_POST['co'])){$
         <br/>
         <br>
         </form>";
-
+        }
+    }
 
         //Partie Admin
 
-        if(isset($_POST['login']) AND $_POST['login'] == "administrateur"){
-            if(isset($_POST['mdp']) AND $_POST['mdp'] == "guerit"){
+        if($_POST['login'] == "administrateur"){
+            if($_POST['mdp'] == "guerit"){
                 echo"connexion en cours";
                 sleep(1);
                 echo"3";
@@ -81,11 +83,17 @@ if(isset($_POST['co'])){$
                 <br/>
                 <br>
                 </form>";
-
+            }
+        }
         
-    }
+      
 }
-}
+
+echo " <form>
+<li><a href='http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php'> Connexion </a></li>
+<br/>
+<br>
+</form>";
 
 ?>
 

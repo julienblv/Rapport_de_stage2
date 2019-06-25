@@ -57,6 +57,7 @@ Selectionnez l'id de la personne à supprimer:
 
 <?php
 
+var_dump(isset($_POST['supprim']));
     $user="root";
     $pass="";
     $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
@@ -65,27 +66,27 @@ Selectionnez l'id de la personne à supprimer:
   
 //------------------------------------------Partie Ajout-----------------------------------------//
 
-   if (isset($_POST['nom']!=''){
+   if ($_POST['nom']!=''){
        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (nom) VALUES ('$nom')");
    }
-   if (isset($_POST['batiment'])!=''){
+   if ($_POST['batiment']!=''){
         $req=$dbh->query("INSERT INTO annuaire_comite_alerte (batiment) VALUES ('$batiment')");
     }
-   else if (isset($_POST['etage']!='')){
+   else if ($_POST['etage']!=''){
         $req=$dbh->query("INSERT INTO annuaire_comite_alerte (etage) VALUES ('$etage')");
 
    }
-   else if (isset($_POST['portable']!='')){
+   else if ($_POST['portable']!=''){
         $req=$dbh->query("INSERT INTO annuaire_comite_alerte (portable) VALUES ('$portable')");
    }
-   else if (isset($_POST['fixe']!='')){
+   else if ($_POST['fixe']!=''){
         $req=$dbh->query("INSERT INTO annuaire_comite_alerte (fixe) VALUES ('$fixe')");
    }
 
 
 //------------------------------------------Partie Supression-----------------------------------------//
 
-   if (isset($_POST['idspr']!=''){
+   if ($_POST['idspr']!=''){
     $req=$dbh->query("DELETE FROM annuaire_comite_alerte WHERE 'id'=$idspr");
 
 }

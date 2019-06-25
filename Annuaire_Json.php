@@ -68,7 +68,7 @@ echo
 <input type = 'submit' style='margin-top :100px' name = 'jason'>";
 var_dump(isset($_POST['jason']));
 
-    if(isset($_POST['jason'])){
+    if($_POST['jason']){
 
 //ouverture  du fichier en format JSON//
         $json= file_get_contents("Nueros_importants.json");
