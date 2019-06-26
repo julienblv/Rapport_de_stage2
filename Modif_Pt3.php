@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<form method='POST' action= <?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> >
-</form>
 
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 
 <head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 </head>
+
+
+
 <body>
 
 <h1> CPAM PCA </h1>
 <h3>Modification_En_cours</h3>
-
-
-<form>
-
+<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php"> Retour à l'accueuil ?</a></li>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php"> Retour à la liste ?</a></li>
 <br/>
 <br>
-</form>
 
 
+
+<form method="POST" action= <?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>>
 <h1>Entrez les informations du contact à Ajouter :</h1>
 <br/>
 <br/>
@@ -55,15 +53,24 @@ Selectionnez l'id de la personne à supprimer:
 <br/>
 <input type ='submit' name='supprim' value="Supprimer">
 
+</form>
+
+
 <?php
 
-var_dump(isset($_POST['supprim']));
+
     $user="root";
     $pass="";
     $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
     
    $req=$dbh->query("SELECT * FROM annuaire_comite_alerte");
-  
+
+   var_dump($_POST);
+
+   var_dump($_POST['supprim']);
+
+   
+if ($_GET['supprim']){
 //------------------------------------------Partie Ajout-----------------------------------------//
 
    if ($_POST['nom']!=''){
@@ -82,7 +89,7 @@ var_dump(isset($_POST['supprim']));
    else if ($_POST['fixe']!=''){
         $req=$dbh->query("INSERT INTO annuaire_comite_alerte (fixe) VALUES ('$fixe')");
    }
-
+}
 
 //------------------------------------------Partie Supression-----------------------------------------//
 
