@@ -21,85 +21,85 @@
 
 
 
-<form method="POST" action= <?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>>
+<form method="POST" action= "http://localhost/phpmyadmin/db_structure.php?server=1&db=annuaire">
 <h1>Entrez les informations du contact à Ajouter :</h1>
-<br/>
-<br/>
-
-Nom:
-<input type="text" name='nom'>
-<br/>
-Batiment:
-<input type="text" name='batiment'>
-<br/>
-Etage:
-<input type="text" name='etage'>
-<br/> 
-Portable:
-<input type="text" name='portable'>
-<br/>
-Fixe:
-<input type="text" name='fixe'>
-<br/>
-<input type='submit' name='ajout' value="Ajouter">
-
-<h1>Entrez les informations du contact à Supprimer :</h1>
-<br/>
-<br/>
-
-
-Selectionnez l'id de la personne à supprimer:
-<input type="text" name='idspr'>
-<br/>
-<input type ='submit' name='supprim' value="Supprimer">
-
 </form>
 
 
 <?php
+     
+     //bien mais obsolete pour php5 a remplaçer avec msqli :
 
 
-    $user="root";
-    $pass="";
-    $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
-    
-   $req=$dbh->query("SELECT * FROM annuaire_comite_alerte");
+     mysqli_connect("127.0.0.1", "root", " ", "annuaire_comite_alerte");
+     if (!$link) {
+          die('Erreur de connexion : ' . mysqli_connect_error());
+      }
+      
 
-   var_dump($_POST);
+     mysql_select("annuaire") or die(mysql_error());
+     $UID=(int)$_GET['ID'];
+     $querry=mysql_query("SELECT * FROM annuaire_comite_alerte WHERE id='$UID'")or die(mysql_error());
+     
+     if(mysql_num_rows($query)>=1){
+          while($row = mysql_fetch_array($query>=1)) {
+               $nom = $row['nom'];
+               $batiment=$row['batiment'];
+               $etage=$row['etage'];
+               $portable=$row['portable'];
+               $fixe=$row['fixe'];
+     }
+?>
+<form action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> method="POST">
 
-   var_dump($_POST['supprim']);
 
+<input type="hidden" name="ID" value="<?=$UID;?>"><br>
+
+Nom:<input type="text" name="ud_nom" value="<?$nom;?>"><br>
+
+Batiment:<input type="text" name="ud_batiment" value="<?$nom;?>"><br>
+
+Etage:<input type="text" name="ud_etage" value="<?$nom;?>"><br>
+
+Portable:<input type="text" name="ud_portable" value="<?$nom;?>"><br>
+
+Fixe:<input type="text" name="ud_fixe" value="<?$nom;?>"><br>
+
+<input type="Submit">
+
+
+</form>
+
+<?php
+     }else{
+          echo "Pas d'entrée trouvée. <a href='javascript:history.back()'>Retour en arrière ?</a>" ;
+     }
+?>
+
+<?php
+
+
+$ud_ID = (int)$_POST["ID"];
+
+$ud_nom = mysql_real_escape_string($_POST["ud_nom"]);
+$ud_batiment = mysql_real_escape_string($_POST["ud_batiment"]);
+$ud_etage = mysql_real_escape_string($_POST["ud_etage"]);
+$ud_portable= mysql_real_escape_string($_POST["ud_portable"]);
+$ud_fixe= mysql_real_escape_string($_POST["ud_fixe"]);
+
+
+$query="UPDATE stokesley_students
+        SET nom = '$ud_nom', batiment = '$ud_batiment', etage = '$ud_etage', portable='$ud_portable', fixe = '$ud_fixe' 
+        WHERE ID='$ud_ID'";
+
+
+mysql_query($query)or die(mysql_error());
+if(mysql_affected_rows()>=1){
+echo "<p>($ud_ID) Record Updated<p>";
+}else{
+echo "<p>($ud_ID) Not Updated<p>";
+}
    
-if ($_GET['supprim']){
-//------------------------------------------Partie Ajout-----------------------------------------//
-
-   if ($_POST['nom']!=''){
-       $req=$dbh->query("INSERT INTO annuaire_comite_alerte (nom) VALUES ('$nom')");
-   }
-   if ($_POST['batiment']!=''){
-        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (batiment) VALUES ('$batiment')");
-    }
-   else if ($_POST['etage']!=''){
-        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (etage) VALUES ('$etage')");
-
-   }
-   else if ($_POST['portable']!=''){
-        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (portable) VALUES ('$portable')");
-   }
-   else if ($_POST['fixe']!=''){
-        $req=$dbh->query("INSERT INTO annuaire_comite_alerte (fixe) VALUES ('$fixe')");
-   }
-}
-
-//------------------------------------------Partie Supression-----------------------------------------//
-
-   if ($_POST['idspr']!=''){
-    $req=$dbh->query("DELETE FROM annuaire_comite_alerte WHERE 'id'=$idspr");
-
-}
-
-
-
 
 
 ?>
