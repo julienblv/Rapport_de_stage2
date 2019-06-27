@@ -21,89 +21,83 @@
 
 
 
-<form method="POST" action= "http://localhost/phpmyadmin/db_structure.php?server=1&db=annuaire">
+
 <h1>Entrez les informations du contact à Ajouter :</h1>
-</form>
 
 
-<?php
-     
-     //bien mais obsolete pour php5 a remplaçer avec msqli :
-
-     $server="http://localhost/127.0.0.1";
-     $user="root";
-     $password=" ";
-     $database="annuaire_comite_alerte";
-
-     mysqli_connect($server, $user, $password, $database);
-     
-
-     $UID = (int)$_GET['ID'];
-     $query = mysqli_query("SELECT * FROM stokesley_students WHERE id = '$UID'") or die(mysql_error());
-
-     
-     if(mysqli_num_rows($query)>=1){
-          while($row = mysqli_fetch_row($query>=1)) {
-               $nom = $row['nom'];
-               $batiment=$row['batiment'];
-               $etage=$row['etage'];
-               $portable=$row['portable'];
-               $fixe=$row['fixe'];
-     }
-
-?>
-<form action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> method="POST">
 
 
-<input type="hidden" name="ID" value="<?=$UID;?>"><br>
+<form action="Modif_pt3.php" method="POST">
 
-Nom:<input type="text" name="ud_nom" value="<?$nom;?>"><br>
 
-Batiment:<input type="text" name="ud_batiment" value="<?$nom;?>"><br>
+Nom:<input type="text" name="nom"><br>
 
-Etage:<input type="text" name="ud_etage" value="<?$nom;?>"><br>
+Batiment:<input type="text" name="batiment"><br>
 
-Portable:<input type="text" name="ud_portable" value="<?$nom;?>"><br>
+Etage:<input type="text" name="etage"><br>
 
-Fixe:<input type="text" name="ud_fixe" value="<?$nom;?>"><br>
+Portable:<input type="text" name="portable"><br>
+
+Fixe:<input type="text" name="fixe"><br>
 
 <input type="Submit">
-
-
 </form>
 
+
 <?php
-     }else{
-          echo "Pas d'entrée trouvée. <a href='javascript:history.back()'>Retour en arrière ?</a>" ;
+try{
+     $user = "root";
+     $password= "";
+     $dbh= new PDO('mysql:host=localhost;dbname=annuaire',$user,$password);
+     $requete='SELECT * FROM annuaire_commite_alerte';
+     foreach($dbh->query($requete) as $row){
+          print_r($row);
      }
+
+     $dbh = null;
+}catch(PDOException $e){
+     print"Erreur!: " . $e->getmessage() ."</br>";
+     die();
+}
+
+
+function afficher_lignes($row){
+     echo 'nom : ' . $row['nom'];
+     echo"</br>";
+     echo 'nom : ' . $row['prenom'];
+     echo"</br>";
+}
 ?>
 
 <?php
 
+$nom=$_GET["name"];
+$prenom=$_GET["prenom"];
+echo'Bonjour'.$nom.' - '.$prenom.'!';
 
-$ud_ID = (int)$_POST["ID"];
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "annuaire";
 
-$ud_nom = mysqli_real_escape_string($_POST["ud_nom"]);
-$ud_batiment = mysqli_real_escape_string($_POST["ud_batiment"]);
-$ud_etage = mysqli_real_escape_string($_POST["ud_etage"]);
-$ud_portable= mysqli_real_escape_string($_POST["ud_portable"]);
-$ud_fixe= mysqli_real_escape_string($_POST["ud_fixe"]);
-
-
-$query="UPDATE annuaire_comite_alerte 
-        SET nom = '$ud_nom', batiment = '$ud_batiment', etage = '$ud_etage', portable='$ud_portable', fixe = '$ud_fixe' 
-        WHERE ID='$ud_ID'";
+try {
 
 
-mysqli_query($query)or die(mysqli_error());
-if(mysqli_affected_rows()>=1){
-echo "<p>($ud_ID) Mis à jour dans la base <p>";
-}else{
-echo "<p>($ud_ID) N'as été pris en compte dans la mise à jour de la base <p>";
-}
-   
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "INSERT INTO MyGuests (firstname, lastname, email)
+    VALUES ('John', 'Doe', 'john@example.com')";
+    // use exec() because no results are returned
+    $conn->exec($sql);
+    echo "New record created successfully";
+    }
+catch(PDOException $e)
+    {
+    echo $sql . "<br>" . $e->getMessage();
+    }
 
-
+$conn = null;
 ?>
 
 
