@@ -45,6 +45,8 @@ Fixe:<input type="text" name="fixe"><br>
 
 
 <?php
+
+
 try{
      $user = "root";
      $password= "";
@@ -71,9 +73,12 @@ function afficher_lignes($row){
 
 <?php
 
-$nom=$_GET["name"];
-$prenom=$_GET["prenom"];
-echo'Bonjour'.$nom.' - '.$prenom.'!';
+$nom=$_POST["nom"];
+$batiment=$_POST["batiment"];
+$etage=$_POST["etage"];
+$fixe=$_POST["fixe"];
+$portable=$_POST["portable"];
+echo'Bonjour'.$nom.' - '.$batiment.' - '.$etage.' - '.$fixe.' - '.$portable.' !';
 
 $servername = "localhost";
 $username = "root";
@@ -81,16 +86,14 @@ $password = "";
 $dbname = "annuaire";
 
 try {
-
-
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO MyGuests (firstname, lastname, email)
-    VALUES ('John', 'Doe', 'john@example.com')";
+    $sql = "INSERT INTO annuaire_comite_alerte (nom, batiment, etage, fixe, portable)
+    VALUES ('$nom', '$batiment', '$etage','$fixe','$portable')";
     // use exec() because no results are returned
     $conn->exec($sql);
-    echo "New record created successfully";
+    echo "Nouvel enregistrement crée avec succès";
     }
 catch(PDOException $e)
     {
