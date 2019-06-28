@@ -14,11 +14,6 @@
 <h1> CPAM PCA </h1>
 <h3>Modification_Annuaire</h3>
 
-
-
-
-
-
 <?php
 
     $user="root";
@@ -28,7 +23,7 @@
    $req=$dbh->query("SELECT * FROM annuaire_comite_alerte");
 ?>
 
-<form method="POST" acton="Show.php">
+
 
 <?php  
     echo "<table border='1'>
@@ -52,15 +47,23 @@
     //initialisation de resultat dans la boucle + Affichage de la requête avec fetch()//
     while($resultat = $req->fetch()){
 
+?>
+        <form method="POST" acton="Show.php">
+
+<?php   
+
     $_POST['id']=$resultat['id'];
         
     echo "<table border='1'>
     <tr>
-    <td><input type='submit' value='".$_POST['id']."'/></td>";?>
+    <td><input type='submit' value='".$_POST['id']."' name=".$_POST['id']."/></td>";
+?>
     </form>
 
-    <?php
-    echo "<td>".$resultat['nom']."</td></a>
+<?php
+    echo 
+    
+    "<td>".$resultat['nom']."</td></a>
     <td>".$resultat['batiment']."</td></a>
     <td>".$resultat['etage']."</td></a>
     <td>".$resultat['portable']."</td></a>
@@ -77,10 +80,8 @@
 
 //partie envoi du contact
 
-
-
-
-
+var_dump($_POST['id']);
+var_dump($resultat['id']);
 ?>
 
 

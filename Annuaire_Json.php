@@ -1,22 +1,14 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
-<form method='POST' action= <?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> >
-</form>
-<?php
-
-
-
-echo
-"<head>
-   
-    
+<head>
 </head>
+
+
 
 <body>
 
+<form method="POST" action="Annuaire_Json.php">
 
 
 
@@ -45,13 +37,11 @@ echo
         <td>
             <div class='dropdown'>
                 <button class='dropbtn' name = 'redir' >Blavette</button>
-                <div class='dropdown-content'>";
+                <div class='dropdown-content'>
 
-                    echo "<a href=''></a>";
-    ?>
-                   <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php">Liste Complète ?</a></li>
-   <?php               
-               echo "</div>
+                    <a href=''></a>
+                   <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php">Liste Complète ?</a></li>               
+               </div>
             </div>
         </td>
 
@@ -65,19 +55,64 @@ echo
 
 <!--mise en place d'un boutton action qui renvoies vers les scripts Json-->
 
-<input type = 'submit' style='margin-top :100px' name = 'jason'>";
-var_dump(isset($_POST['jason']));
+<input type = 'submit' style='margin-top :100px' name = 'jason'>
+</form>
 
-    if($_POST['jason']){
+
+<?php
+
+$json=$_POST['jason'];
+if($_POST['jason']){
 
 //ouverture  du fichier en format JSON//
-        $json= file_get_contents("Nueros_importants.json");
+        $json= file_get_contents("Cpam_CPA/Nueros_importants.json");
 
 
 
 
         var_dump(json_decode($json));
 
+        $Tab_JSon=json_decode($json,true);
+        echo "<table>";
+            foreach($result as $R=>$D){
+                echo"<tr id='Tr_".$R."'>";
+            foreach($D as $key=>$Value){
+                echo"<td id='Td_".$R."_".$key."'>".$Value."</td>";
+            }
+            echo"</tr>";
+        }
+        echo "</table>";
+
+
+
+        $json = fopen("Numeros_importants.json","r+");
+        $json = fclose('Numeros_importants.json');
+
+
+
+
+//Affichage de la base de données complète :
+echo "<h3>Voici la base de données sous forme de tableau Array() :</h3><br>";
+
+        try {
+            $user="root";
+            $pass="";
+            $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
+            foreach($dbh->query('SELECT * from annuaire_comite_alerte') as $row) {
+                echo "<h3>__________________________________________________________________________________________________</h3><br>";
+                print_r($row);
+                echo "<br>";
+            }
+            $dbh = null;
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }
+
+        
+
+      
+    }
 
 
       
@@ -124,50 +159,7 @@ var_dump(isset($_POST['jason']));
 /////////////////////////////////////////////////////////////////////////////////:
 
 
-
-
-
-//( tentative ) affichage sous forme de tableau//
-        $Tab_JSon=json_decode($monJson,true);
-        echo "<table>";
-            foreach($result as $R=>$D){
-                echo"<tr id='Tr_".$R."'>";
-            foreach($D as $key=>$Value){
-                echo"<td id='Td_".$R."_".$key."'>".$Value."</td>";
-            }
-            echo"</tr>";
-        }
-        echo "</table>";
-
-
-
-        $monJson = fopen("Numeros_importants.json","r+");
-        $monJson = fclose('Numeros_importants.json');
-
-        
-
-      
-    }
-
-
-
-//connection à la base de données 
-
-
-try {
-    $user="root";
-    $pass="";
-    $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
-    foreach($dbh->query('SELECT * from annuaire_comite_alerte') as $row) {
-        print_r($row);
-        echo "<br>";
-    }
-    $dbh = null;
-} catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-}
-
+    
 
 
 ?>
