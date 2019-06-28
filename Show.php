@@ -21,7 +21,7 @@
 
 
 
-<h1>Entrez les informations du contact à Ajouter :</h1>
+<h1>Si vous voulez modifier ce contact cliquez sur "modifier le contact" :</h1>
 
 
 
@@ -29,39 +29,53 @@
 <form action="Modif_pt3.php" method="POST">
 
 
-Nom:<input type="text" name="nom"><br>
-
-Batiment:<input type="text" name="batiment"><br>
-
-Etage:<input type="text" name="etage"><br>
-
-Portable:<input type="text" name="portable"><br>
-
-Fixe:<input type="text" name="fixe"><br>
-
-ID (46 Disponibles):<input type="text" name="id"><br>
-
-Niveau (titulaire ou supléant):<input type="text" name="niveau"><br>
-
-Type (directeur/manageur/rpca/pcsecu) :<input type="text" name="type"><br>
-
-<input type="Submit">
-</form>
-
 
 <?php
+//partie récupération 
 
 
 
-//id en "dûr"
-//id1
+
+
+
 //passage en paramètre a voir plus tard 
 //la page show va afficer un contact avec un id en dûr dans un premier temps 
 
+$id=$_POST['id'];
 
+$user="root";
+$pass="";
+$dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
 
+$req=$dbh->query("SELECT * FROM annuaire_comite_alerte WHERE id like '$id'");
+
+while($resultat = $req->fetch()){
+    echo "Nom: ". $resultat['nom']."<br><br>";
+    echo "batiment: ". $resultat['batiment']."<br><br>";
+    echo "etage: ". $resultat['etage']."<br><br>";
+    echo "fixe: ". $resultat['fixe']."<br><br>";
+    echo "portable: ". $resultat['portable']."<br><br>";
+    echo "niveau: ". $resultat['niveau']."<br><br>";
+    echo "fonction: ". $resultat['fonction']."<br><br>";
+    echo "type: ". $resultat['type']."<br><br>";
+
+}
+?>
+
+<?php 
+
+// $id=$_GET['id'];
+// echo "id: ".$id."<br>";
 
 ?>
+
+
+
+
+
+<input type="Submit" value="modifier le contact">
+</form>
+
 
 
 

@@ -40,13 +40,19 @@ Portable:<input type="text" name="portable"><br>
 
 Fixe:<input type="text" name="fixe"><br>
 
+ID (46 Disponibles):<input type="text" name="id"><br>
+
+Niveau (titulaire ou supléant):<input type="text" name="niveau"><br>
+
+Type (directeur/manageur/rpca/pcsecu) :<input type="text" name="type"><br>
+
 <input type="Submit">
 </form>
 
 
 <?php
 
-
+//connexion à la base + affichage des données qui seront prises dans le formulaire + erreurs de gestion
 try{
      $user = "root";
      $password= "";
@@ -56,42 +62,40 @@ try{
           print_r($row);
      }
 
-     $dbh = null;
-}catch(PDOException $e){
+          $dbh = null;
+     }catch(PDOException $e){
      print"Erreur!: " . $e->getmessage() ."</br>";
      die();
 }
 
-
-function afficher_lignes($row){
-     echo 'nom : ' . $row['nom'];
-     echo"</br>";
-     echo 'nom : ' . $row['prenom'];
-     echo"</br>";
-}
 ?>
 
 <?php
+//partie forluaire
 
 $nom=$_POST["nom"];
 $batiment=$_POST["batiment"];
 $etage=$_POST["etage"];
 $fixe=$_POST["fixe"];
 $portable=$_POST["portable"];
-echo'Bonjour'.$nom.' - '.$batiment.' - '.$etage.' - '.$fixe.' - '.$portable.' !';
+$id=$_POST["id"];
+$type=$_POST["type"];
+$niveau=$_POST["niveau"];
+echo'Bonjour'.$nom.' - '.$batiment.' - '.$etage.' - '.$fixe.' - '.$portable.' - '.$id.' !';
 
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "annuaire";
 
+//partie requête 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // set the PDO error mode to exception
+    // mets PDO error en mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO annuaire_comite_alerte (nom, batiment, etage, fixe, portable)
-    VALUES ('$nom', '$batiment', '$etage','$fixe','$portable')";
-    // use exec() because no results are returned
+    $sql = "INSERT INTO annuaire_comite_alerte (nom, batiment, etage, fixe, portable, id, type, niveau)
+    VALUES ('$nom', '$batiment', '$etage','$fixe','$portable', '$id', '$type','$niveau')";
+    // on utilise exec() car aucun, résultat n'est retourné
     $conn->exec($sql);
     echo "Nouvel enregistrement crée avec succès";
     }

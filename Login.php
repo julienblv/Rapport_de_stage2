@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
-<form method='POST' action= <?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> >
+
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 <head>
 
@@ -10,21 +10,19 @@
 <h1> Bienvenue sur l'application CPAM PCA </h1>
 <h3>Veuillez vous connecter avec les identifiants qui vous on été distribués au préalable</h3>
 
+<form method='POST' action= <?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?> >
 
-<div>
 Login:
 <input type = 'txtbox' id='login'>
-</div>
 
-<div>
 Password:
 <input type = 'password'id='mdp'>
-</div>
 
-<input type = 'button' value="connexion" style='margin-top :100px' id = 'co'>
 
-</tr>
-</table>
+<input type = 'button' style='margin-top :100px'>
+
+</form>
+
 
 <?php
 // ---------------------------------------------Codes D'accès---------------------------
@@ -33,13 +31,9 @@ Password:
 // -------------------------------------------------------------------------------------
 
 
-var_dump(isset($_POST['co']));
-$co=$_POST['co'];
-
-
-if($_POST['co']){
-
     //Partie Utilisateur 
+    $login=$_POST['login'];
+    $mdp=$_POST['mdp'];
 
 
    if($_POST['login']== "utilisateur"){
@@ -55,11 +49,11 @@ if($_POST['co']){
         echo"Bravo vous êtes connecté en tant qu'Utilisateur vous pouvez maintenant accéder au site en cliquand ici :</br>
         
         
-        <form>
+        
         <li><a href='http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php'> Connexion </a></li>
         <br/>
         <br>
-        </form>";
+        ";
         }
     }
 
@@ -78,22 +72,22 @@ if($_POST['co']){
                 echo"Bravo vous êtes connecté en tant qu'Administrateur vous pouvez maintenant accéder au site en cliquand ici :</br>
                 
                 
-                <form>
+                
                 <li><a href='http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php'> Connexion </a></li>
                 <br/>
                 <br>
-                </form>";
+                ";
             }
         }
         
       
-}
 
-echo " <form>
+
+echo "
 <li><a href='http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php'> Connexion </a></li>
 <br/>
 <br>
-</form>";
+";
 
 ?>
 
