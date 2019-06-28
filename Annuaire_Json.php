@@ -55,7 +55,7 @@
 
 <!--mise en place d'un boutton action qui renvoies vers les scripts Json-->
 
-<input type = 'submit' style='margin-top :100px' name = 'jason'>
+<input type = 'submit' style='margin-top :100px' name = 'jason' value="Modifier Via Fichier Json et observer la Base de données">
 </form>
 
 
@@ -66,25 +66,7 @@ if($_POST['jason']){
 
 //ouverture  du fichier en format JSON//
         $json= file_get_contents("Cpam_CPA/Nueros_importants.json");
-
-
-
-
-        var_dump(json_decode($json));
-
-        $Tab_JSon=json_decode($json,true);
-        echo "<table>";
-            foreach($result as $R=>$D){
-                echo"<tr id='Tr_".$R."'>";
-            foreach($D as $key=>$Value){
-                echo"<td id='Td_".$R."_".$key."'>".$Value."</td>";
-            }
-            echo"</tr>";
-        }
-        echo "</table>";
-
-
-
+    var_dump(json_decode($json));
         $json = fopen("Numeros_importants.json","r+");
         $json = fclose('Numeros_importants.json');
 

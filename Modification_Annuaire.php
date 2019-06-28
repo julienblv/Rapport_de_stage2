@@ -3,7 +3,7 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php"> Retour à l'accueuil ?</a></li>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Show.php"> Modifier le contact ?</a></li>
+<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Show.php"> Voir les contacts ?</a></li>
 <head>
 </head>
 
@@ -48,7 +48,7 @@
     while($resultat = $req->fetch()){
 
 ?>
-        <form method="POST" acton="Show.php">
+        <form method="POST" action="Show.php?id='<?php $resultat['id']?>'"> 
 
 <?php   
 
@@ -56,7 +56,7 @@
         
     echo "<table border='1'>
     <tr>
-    <td><input type='submit' value='".$_POST['id']."' name=".$_POST['id']."/></td>";
+    <td><input type='submit' value='".$_POST['id']."' name='id'/></td>";
 ?>
     </form>
 

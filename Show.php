@@ -42,6 +42,10 @@
 //la page show va afficer un contact avec un id en dûr dans un premier temps 
 
 $id=$_POST['id'];
+print_r($_POST);
+echo $_POST[0];
+
+echo "valeur du post ". $id ;
 
 $user="root";
 $pass="";
