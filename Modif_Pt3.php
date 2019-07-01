@@ -30,7 +30,7 @@
 <form action="Modif_pt3.php" method="POST">
 
 
-Nom:<input type="text" name="nom"><br>
+Nom:<input type="text" name="nom" value="<?php if($_POST['id']){echo $_POST['id'];}?>"><br>
 
 Batiment:<input type="text" name="batiment"><br>
 
@@ -50,7 +50,12 @@ Type (directeur/manageur/rpca/pcsecu) :<input type="text" name="type"><br>
 </form>
 
 
+
 <?php
+
+$id=$_POST['id'];
+print_r($_POST);
+echo $_POST[0];
 
 //connexion à la base + affichage des données qui seront prises dans le formulaire + erreurs de gestion
 try{
@@ -71,6 +76,9 @@ try{
 ?>
 
 <?php
+print_r($_GET['nom']);
+print_r($_POST['nom']);
+echo $_POST[0];
 //partie forluaire
 
 $nom=$_POST["nom"];
@@ -82,6 +90,9 @@ $id=$_POST["id"];
 $type=$_POST["type"];
 $niveau=$_POST["niveau"];
 echo'Bonjour'.$nom.' - '.$batiment.' - '.$etage.' - '.$fixe.' - '.$portable.' - '.$id.' !';
+
+print_r($_GET['nom']);
+print_r($_POST['nom']);
 
 $servername = "localhost";
 $username = "root";
