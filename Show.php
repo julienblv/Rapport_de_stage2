@@ -7,7 +7,6 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php"> Modifier le contact ?</a></li>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php"> Retour à l'acceuil ?</a></li>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php"> Retour à la liste ?</a></li>
 </head>
 
@@ -26,8 +25,7 @@
 
 
 
-<form action="Modif_pt3.php" method="POST">
-
+<form method="POST" action="Modif_Pt3.php?id='<?php $resultat['id']?>'"> 
 
 
 <?php
@@ -61,6 +59,7 @@ while($resultat = $req->fetch()){
     echo "type: ". $resultat['type']."<br><br>";
 
 }
+
 ?>
 
 <?php 
@@ -69,6 +68,7 @@ while($resultat = $req->fetch()){
 // echo "id: ".$id."<br>";
 
 ?>
+
 
 
 

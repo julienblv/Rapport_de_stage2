@@ -2,8 +2,7 @@
 <html lang="fr">
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php"> Retour à l'accueuil ?</a></li>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Show.php"> Voir les contacts ?</a></li>
+
 <head>
 </head>
 
@@ -37,6 +36,7 @@
     <td>Fonction</td>
     <td>Niveau</td>
     <td>Type</td>
+    <td>modification</td>
     </tr>
     </br>
     </br>
@@ -71,6 +71,7 @@
     <td>".$resultat['fonction']."</td></a>
     <td>".$resultat['niveau']."</td></a>
     <td>".$resultat['type']."</td></a>
+    <a href='http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php'><input type='button' value='Modifier le contact ?/></td></a>
     </tr>";
     
     }

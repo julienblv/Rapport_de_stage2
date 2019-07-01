@@ -24,6 +24,7 @@ Password:
 </form>
 
 
+
 <?php
 // ---------------------------------------------Codes D'accès---------------------------
 //         User :              Login: utilisateur          Password: malade
@@ -41,15 +42,7 @@ Password:
         sleep(1);
         sleep(1);    
         sleep(1);
-        echo"Bravo vous êtes connecté en tant qu'Utilisateur vous pouvez maintenant accéder au site en cliquand ici :</br></br>
-        
-        
-        
-        <li><a href='http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php'> Connexion </a></li>
-        <br/>
-        <br>
-        ";
-        
+        include('Modification_Annuaire.php');
     }
 
         //Partie Admin
@@ -60,15 +53,7 @@ Password:
             sleep(1);
             sleep(1);
             sleep(1);
-            echo"Bravo vous êtes connecté en tant qu'Administrateur vous pouvez maintenant accéder au site en cliquand ici : </br></br>
-                
-                
-                
-                <li><a href='http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php'> Connexion </a></li>
-                <br/>
-                <br>
-                ";
-            
+            include('Modification_Annuaire.php');            
         }
 
 ?>

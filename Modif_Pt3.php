@@ -14,7 +14,6 @@
 <h1> CPAM PCA </h1>
 <h3>Modification_En_cours</h3>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Annuaire_Json.php"> Retour à l'accueuil ?</a></li>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php"> Retour à la liste ?</a></li>
 <br/>
 <br>
@@ -25,12 +24,10 @@
 <h1>Entrez les informations du contact à Ajouter :</h1>
 
 
+<form method="POST" action="Modif_Pt3.php?id='<?php $resultat['id']?>'"> 
 
 
-<form action="Modif_pt3.php" method="POST">
-
-
-Nom:<input type="text" name="nom" value="<?php if($_POST['id']){echo $_POST['id'];}?>"><br>
+Nom:<input type="text" name="nom"><br>
 
 Batiment:<input type="text" name="batiment"><br>
 
@@ -50,38 +47,38 @@ Type (directeur/manageur/rpca/pcsecu) :<input type="text" name="type"><br>
 </form>
 
 
-
 <?php
 
-$id=$_POST['id'];
+$_POST['id']=$resultat['id'];
+
+print_r($_POST['id']);
+
 print_r($_POST);
-echo $_POST[0];
+
 
 //connexion à la base + affichage des données qui seront prises dans le formulaire + erreurs de gestion
-try{
-     $user = "root";
-     $password= "";
-     $dbh= new PDO('mysql:host=localhost;dbname=annuaire',$user,$password);
-     $requete='SELECT * FROM annuaire_commite_alerte';
-     foreach($dbh->query($requete) as $row){
-          print_r($row);
-     }
+$user="root";
+$pass="";
+$dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
 
-          $dbh = null;
-     }catch(PDOException $e){
-     print"Erreur!: " . $e->getmessage() ."</br>";
-     die();
+$req=$dbh->query("SELECT * FROM annuaire_comite_alerte WHERE id like '$id'");
+
+while($resultat = $req->fetch()){
+    echo "Nom: ". $resultat['nom']."<br><br>";
+    echo "batiment: ". $resultat['batiment']."<br><br>";
+    echo "etage: ". $resultat['etage']."<br><br>";
+    echo "fixe: ". $resultat['fixe']."<br><br>";
+    echo "portable: ". $resultat['portable']."<br><br>";
+    echo "niveau: ". $resultat['niveau']."<br><br>";
+    echo "fonction: ". $resultat['fonction']."<br><br>";
+    echo "type: ". $resultat['type']."<br><br>";
 }
 
 ?>
 
 <?php
-print_r($_GET['nom']);
-print_r($_POST['nom']);
-echo $_POST[0];
 //partie forluaire
-
-$nom=$_POST["nom"];
+$nom=$resultat["nom"];
 $batiment=$_POST["batiment"];
 $etage=$_POST["etage"];
 $fixe=$_POST["fixe"];
@@ -91,31 +88,12 @@ $type=$_POST["type"];
 $niveau=$_POST["niveau"];
 echo'Bonjour'.$nom.' - '.$batiment.' - '.$etage.' - '.$fixe.' - '.$portable.' - '.$id.' !';
 
-print_r($_GET['nom']);
-print_r($_POST['nom']);
-
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "annuaire";
 
-//partie requête 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    // mets PDO error en mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = "INSERT INTO annuaire_comite_alerte (nom, batiment, etage, fixe, portable, id, type, niveau)
-    VALUES ('$nom', '$batiment', '$etage','$fixe','$portable', '$id', '$type','$niveau')";
-    // on utilise exec() car aucun, résultat n'est retourné
-    $conn->exec($sql);
-    echo "Nouvel enregistrement crée avec succès";
-    }
-catch(PDOException $e)
-    {
-    echo $sql . "<br>" . $e->getMessage();
-    }
 
-$conn = null;
 ?>
 
 
