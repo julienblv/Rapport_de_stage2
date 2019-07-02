@@ -41,6 +41,11 @@
 
 $id=$_POST['id'];
 
+//récup d'un formulaire qui permet de voir si c'est un admin ou user connecté
+
+
+print_r($_POST);
+
 
 $user="root";
 $pass="";
@@ -57,7 +62,6 @@ while($resultat = $req->fetch()){
     echo "niveau: ". $resultat['niveau']."<br><br>";
     echo "fonction: ". $resultat['fonction']."<br><br>";
     echo "type: ". $resultat['type']."<br><br>";
-
 }
 
 ?>

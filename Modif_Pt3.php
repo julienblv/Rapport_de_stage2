@@ -24,10 +24,10 @@
 <h1>Entrez les informations du contact à Ajouter :</h1>
 
 
-<form method="POST" action="Modif_Pt3.php?id='<?php $resultat['id']?>'"> 
+<form method="POST" action="Modif_Pt3.php?id='<?php $_POST['id']?>'"> 
 
 
-Nom:<input type="text" name="nom"><br>
+Nom:<input type="text" name="nom" value="<?php $_POST['id']?>"><br>
 
 Batiment:<input type="text" name="batiment"><br>
 
@@ -52,7 +52,8 @@ Type (directeur/manageur/rpca/pcsecu) :<input type="text" name="type"><br>
 $_POST['id']=$resultat['id'];
 
 print_r($_POST['id']);
-
+print_r($_GET);
+print_r($_GET['id']);
 print_r($_POST);
 
 
@@ -73,26 +74,6 @@ while($resultat = $req->fetch()){
     echo "fonction: ". $resultat['fonction']."<br><br>";
     echo "type: ". $resultat['type']."<br><br>";
 }
-
-?>
-
-<?php
-//partie forluaire
-$nom=$resultat["nom"];
-$batiment=$_POST["batiment"];
-$etage=$_POST["etage"];
-$fixe=$_POST["fixe"];
-$portable=$_POST["portable"];
-$id=$_POST["id"];
-$type=$_POST["type"];
-$niveau=$_POST["niveau"];
-echo'Bonjour'.$nom.' - '.$batiment.' - '.$etage.' - '.$fixe.' - '.$portable.' - '.$id.' !';
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "annuaire";
-
 
 ?>
 

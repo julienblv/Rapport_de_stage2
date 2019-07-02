@@ -43,7 +43,9 @@ Password:
         sleep(1);    
         sleep(1);
         include('Modification_Annuaire.php');
-    }
+        //formulaire qui fera que l'utilisateur pourra voir des contacts snas les modifier//
+        $uti=$_POST['mdp'];
+         }
 
         //Partie Admin
 
@@ -53,7 +55,9 @@ Password:
             sleep(1);
             sleep(1);
             sleep(1);
-            include('Modification_Annuaire.php');            
+            include('Modification_Annuaire.php');
+            //formulaire qui fera que l'admin pourra voir des contacts snas les modifier//
+            $admi=$_POST['mdp'];            
         }
 
 ?>
