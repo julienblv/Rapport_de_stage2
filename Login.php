@@ -33,9 +33,29 @@ Password:
 
 
     //Partie Utilisateur 
-    $login=$_POST['login'];
-    $mdp=$_POST['mdp'];
 
+    $user="root";
+    $pass="";
+    $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
+    
+    $req=$dbh->query("SELECT * FROM gestion_des_comptes");
+
+
+    //affichage bd//
+
+    while($resultat = $req->fetch()){
+        echo "Nom: ". $resultat['id_utilisateur']."<br><br>";
+        echo "batiment: ". $resultat['login_utilisateur']."<br><br>";
+        echo "etage: ". $resultat['mdp_utilisateur']."<br><br>";
+        echo "fixe: ". $resultat['id_cpam']."<br><br>";
+        echo "portable: ". $resultat['admin_or_not']."<br><br>";
+    }
+
+
+
+
+        $login=$_POST['login'];
+        $mdp=$_POST['mdp'];
 
    if($_POST['login']== "utilisateur" && $_POST['mdp'] == "malade"){
         echo"</br>";
@@ -45,7 +65,7 @@ Password:
         include('Modification_Annuaire.php');
         //formulaire qui fera que l'utilisateur pourra voir des contacts snas les modifier//
         $uti=$_POST['mdp'];
-         }
+         
 
         //Partie Admin
 
@@ -59,6 +79,7 @@ Password:
             //formulaire qui fera que l'admin pourra voir des contacts snas les modifier//
             $admi=$_POST['mdp'];            
         }
+    }
 
 ?>
 

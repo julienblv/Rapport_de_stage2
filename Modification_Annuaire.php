@@ -3,6 +3,7 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 
+
 <head>
 </head>
 
@@ -14,18 +15,9 @@
 <h3>Modification_Annuaire</h3>
 
 
-<a href="http://localhost/Dossier%20Php/Cpam_CPA/Numeros_importants.json" download>Téléchargaer l'annuaire au format Json ?</a>
-<br/>
-<br/>
-
+<a href="http://localhost/Dossier%20Php/Cpam_CPA/Numeros_importants.json" download>Téléchargez le Json ici</a>
 
 <?php
-
-
-    $pass=$_GET['mdp'];
-    print_r($_GET['mdp']);
-
-    
 
     $user="root";
     $pass="";
@@ -60,8 +52,7 @@
     while($resultat = $req->fetch()){
 
 ?>
-        <!--Premier Formulaire pour l'affichage du contact!-->
-        <form method="POST" action="Show.php?id='<?php $resultat['id']?>'" id="form1"> 
+        <form method="POST" action="Show.php?id='<?php $resultat['id']?>'"> 
 
 <?php   
 
@@ -75,7 +66,7 @@
 
 <?php
     echo 
-
+    
     "<td>".$resultat['nom']."</td></a>
     <td>".$resultat['batiment']."</td></a>
     <td>".$resultat['etage']."</td></a>
@@ -83,27 +74,20 @@
     <td>".$resultat['fixe']."</td></a>
     <td>".$resultat['fonction']."</td></a>
     <td>".$resultat['niveau']."</td></a>
-    <td>".$resultat['type']."</td></a>";
-
-    //deuxieme formulaire pour la modif du contact
-?>
-    <form method="POST" action="Modif_Pt3.php?id='<?php $resultat['id']?>'" id="form2">
-<?php 
-    echo "<input type='submit' value='Modifier le contact :".$_POST['id']."' name = 'id'/></td></a>
-    </form>
+    <td>".$resultat['type']."</td></a>
+    
+    <a href='http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php'><input type='button' value='Modifier le contact ?/></td></a>
     </tr>";
+    
+    }
 
-   }
     echo "</table>
     ";
-
 
 //partie envoi du contact
 
 var_dump($_POST['id']);
 var_dump($resultat['id']);
-
-
 ?>
 
 
