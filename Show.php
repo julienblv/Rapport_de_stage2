@@ -28,7 +28,7 @@ $_SESSION['id']=$_POST['id'];
 
 
 
-<form method="POST" action="Modif_Pt3.php?id='<?php $resultat['id']?>'"> 
+<form method="POST" action="Modif_Pt3.php?id='<?php $_POST['id']?>'"> 
 
 
 <?php

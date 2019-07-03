@@ -1,19 +1,16 @@
 <?php 
 session_save_path();
 session_start();
-$_SESSION['id']=$_POST['id'];
+//$_SESSION['id']=$_POST['id'];
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
-<meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+<meta http-equiv="Content-type" content="text/html"/>
+<!-- mettre une condition si session null ou pas -->
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
-
-
 <head>
 </head>
-
-
 
 <body>
 
@@ -77,7 +74,7 @@ $_SESSION['id']=$_POST['id'];
 
 <?php
     echo 
-    "<form method='POST' action='Modif_Pt3.php?id='".$resultat['id']."'>
+    "<form method='POST' action='Modif_Pt3.php?id='".$_POST['id']."'>
     <input type='submit' value='Modifier le contact".$_POST['id']." ?'/></td></a>
     </form>
     <td>".$resultat['nom']."</td></a>
