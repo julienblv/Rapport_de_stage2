@@ -1,7 +1,12 @@
+
+<?php 
+session_save_path();
+session_start();
+$_SESSION['id']=$_POST['id'];
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
-
-
 
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
@@ -17,7 +22,7 @@
 <h1> CPAM PCA </h1>
 <h3>Modification du contact</h3>
 
-<form method="POST" action="Modif_Pt3.php?id='<?php $resultat['id']?>'"> 
+
 
 
 <?php
@@ -26,13 +31,12 @@
 //passage en paramètre a voir plus tard 
 //la page show va afficer un contact avec un id en dûr dans un premier temps 
 
-$id=$_POST['id'];
+$_SESSION['id'];
 
 //récup d'un formulaire qui permet de voir si c'est un admin ou user connecté
 
 
-print_r($_POST);
-
+print_r($_SESSION);
 
 $user="root";
 $pass="";

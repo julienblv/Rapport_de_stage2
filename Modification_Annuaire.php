@@ -1,3 +1,9 @@
+<?php 
+session_save_path();
+session_start();
+$_SESSION['id']=$_POST['id'];
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
@@ -18,6 +24,8 @@
 <a href="http://localhost/Dossier%20Php/Cpam_CPA/Numeros_importants.json" download>Téléchargez le Json ici</a>
 
 <?php
+
+
 
     $user="root";
     $pass="";
@@ -58,16 +66,21 @@
 
     $_POST['id']=$resultat['id'];
         
+    $_POST['nom']=$resultat['nom'];
+        
     echo "<table border='1'>
-    <tr>
+    <tr>  
     <td><input type='submit' value='".$_POST['id']."' name='id'/></td>";
+    
 ?>
     </form>
 
 <?php
     echo 
-    
-    "<td>".$resultat['nom']."</td></a>
+    "<form method='POST' action='Modif_Pt3.php?id='".$resultat['id']."'>
+    <input type='submit' value='Modifier le contact".$_POST['id']." ?'/></td></a>
+    </form>
+    <td>".$resultat['nom']."</td></a>
     <td>".$resultat['batiment']."</td></a>
     <td>".$resultat['etage']."</td></a>
     <td>".$resultat['portable']."</td></a>
@@ -76,7 +89,7 @@
     <td>".$resultat['niveau']."</td></a>
     <td>".$resultat['type']."</td></a>
     
-    <a href='http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php'><input type='button' value='Modifier le contact ?/></td></a>
+  
     </tr>";
     
     }
@@ -86,7 +99,9 @@
 
 //partie envoi du contact
 
-var_dump($_POST['id']);
+
+var_dump($_POST['nom']);
+print_r($_POST['nom']);
 var_dump($resultat['id']);
 ?>
 

@@ -1,3 +1,12 @@
+<?php 
+session_start();
+if(isset($_POST) &&!empty($_POST['login']) && !empty($_POST['mdp'])){
+    extract($_POST);
+    
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
@@ -38,18 +47,11 @@ Password:
     $pass="";
     $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
     
-    $req=$dbh->query("SELECT * FROM gestion_des_comptes");
+    $req=$dbh->query("SELECT id FROM gestion_des_comptes WHERE login_utilisateur='$login' AND mdp_utilisateur='$mdp'");
 
 
     //affichage bd//
 
-    while($resultat = $req->fetch()){
-        echo "Nom: ". $resultat['id_utilisateur']."<br><br>";
-        echo "batiment: ". $resultat['login_utilisateur']."<br><br>";
-        echo "etage: ". $resultat['mdp_utilisateur']."<br><br>";
-        echo "fixe: ". $resultat['id_cpam']."<br><br>";
-        echo "portable: ". $resultat['admin_or_not']."<br><br>";
-    }
 
 
 
@@ -57,7 +59,7 @@ Password:
         $login=$_POST['login'];
         $mdp=$_POST['mdp'];
 
-   if($_POST['login']== "utilisateur" && $_POST['mdp'] == "malade"){
+   if($_POST['login'] && $_POST['mdp']){
         echo"</br>";
         sleep(1);
         sleep(1);    
