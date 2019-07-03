@@ -75,8 +75,6 @@ while($resulta = $req->fetch()){
 
 <?php
 
-$button=$_POST['button'];
-
 $nom=$resulta['nom'];
 $batiment=$resulta['batiment'];
 $etage=$resulta['etage'];
@@ -99,7 +97,7 @@ $type=$resulta['type'];
 <?php 
 
 //insertion dans la database :
-if($_POST['button']=="push"){
+if(isset($_POST['push'])){
 
     try {
         $conn = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
