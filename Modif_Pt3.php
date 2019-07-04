@@ -98,26 +98,17 @@ $type=$resulta['type'];
 
 //insertion dans la database :
 if(isset($_POST['push'])){
-
-    try {
-        $conn = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
+        
         // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO annuaire_comite_alerte (nom, batiment, etage, fixe, portable, niveau, fonction, type)
-        VALUES ('$nom', '$batiment', '$etage','$fixe','$niveau','$fonction','$type')";
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "INSERT INTO 'annuaire_comite_alerte' ('nom', 'batiment', 'etage', 'fixe', 'portable', 'niveau', 'fonction', 'type')
+        VALUES (:$nom, :$batiment, :$etage, :$fixe, :$niveau, :$fonction, :$type)";
         // on utilise  exec() car la variable ne retourne rien 
-    
-        $conn->exec($sql);
+        $result=$dbh->prepare($sql);
+        $result->execute(['nom'=> $nom,'batiment'=> $batiment,'etage' => $etage,'fixe' => $fixe,'portable'=> $portable,'niveau' => $niveau,'fonction' => $fonction,'type' => $type]);
         echo "New record created successfully";
         }
-    catch(PDOException $e)
-        {
-        echo $sql . "<br>" . $e->getMessage();
-        }
-
-        $conn = null;
-        }
-
+   
 else{
         echo"insertion failed";
     }

@@ -2,7 +2,8 @@
 session_start();
 if(isset($_POST) &&!empty($_POST['login']) && !empty($_POST['mdp'])){
     extract($_POST);
-    
+//les variables sessions qui vont communiquer via ttes les pages 
+//et permettre l'affichage et gestion du site selon si un admin ou user est connecté 
 
 }
 ?>
@@ -68,20 +69,19 @@ Password:
         //formulaire qui fera que l'utilisateur pourra voir des contacts snas les modifier//
         $uti=$_POST['mdp'];
          
-
-        //Partie Admin
-
-        if($_POST['login'] == "administrateur" && $_POST['mdp'] == "guerit"){
-            echo"</br>";
-            
-            sleep(1);
-            sleep(1);
-            sleep(1);
-            include('Modification_Annuaire.php');
-            //formulaire qui fera que l'admin pourra voir des contacts snas les modifier//
-            $admi=$_POST['mdp'];            
+        //affichage admin 
+        if ($req=$dbh->query("SELECT '$login',admin_or_not FROM gestion_des_comptes WHERE admin_or_not=1")){
+            echo "connecté en tant qu'admin, bienvenue employé: ".$login." ! ";
+            //variable pour les autres pages qui gèrera l'affichage 
+            $admin=1;
         }
+        else{
+            //affichage user
+            echo "connecté en tant qu'utilisateur, bienvenue employé: ".$login." ! ";
+            $admin=0;
+        }      
     }
+    
 
 ?>
 
