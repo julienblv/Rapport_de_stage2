@@ -1,7 +1,11 @@
 <?php 
-session_save_path();
 session_start();
 //$_SESSION['id']=$_POST['id'];
+
+print_r($_SESSION);
+
+print_r($_POST);//contient le login et le mot de passe de celui ou celle qui s'est connecté//
+
 ?>
 
 <!DOCTYPE html>
@@ -73,11 +77,15 @@ session_start();
     </form>
 
 <?php
+
+if ($_SESSION['admin']=="yes"){
     echo 
     "<form method='POST' action='Modif_Pt3.php?id='".$_POST['id']."'>
     <input type='submit' value='Modifier le contact".$_POST['id']." ?'/></td></a>
-    </form>
-    <td>".$resultat['nom']."</td></a>
+    </form>";
+}
+
+    echo"<td>".$resultat['nom']."</td></a>
     <td>".$resultat['batiment']."</td></a>
     <td>".$resultat['etage']."</td></a>
     <td>".$resultat['portable']."</td></a>
