@@ -1,30 +1,40 @@
 <?php 
 session_start();
-//$_SESSION['id']=$_POST['id'];
-
-print_r($_SESSION);
-
-print_r($_POST);//contient le login et le mot de passe de celui ou celle qui s'est connecté//
-
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <meta http-equiv="Content-type" content="text/html"/>
 <!-- mettre une condition si session null ou pas -->
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
+
 <head>
-<link rel ="stylesheet" href="Cpam_CPA/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet"  href="Cpam_CPA/style.css">
+<link rel ="stylesheet" href="http://localhost/Dossier%20Php/Cpam_CPA/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+<link rel="stylesheet"  href="Style.css" type="text/css">
 </head>
 
 <body>
 
-<div class="container-fluid">
-    <div class>
-<h1> CPAM PCA </h1>
-<h3>Modification_Annuaire</h3>
+
+
+<div class="container-fluid" id="color">
+    <h1 id="h1"> CPAM PCA </h1>
+
+
+    <div id = "deco">
+            <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
+
+            </div>
+
+
+        <h3 id="h1">Modification_Annuaire</h3>
+
+        
+        <br/>
+        
+
+            
+</div>
 
 
 <a href="http://localhost/Dossier%20Php/Cpam_CPA/Numeros_importants.json" download>Téléchargez le Json ici</a>
@@ -42,10 +52,12 @@ print_r($_POST);//contient le login et le mot de passe de celui ou celle qui s'e
 
 
 
-<?php  
-    echo "<table border='1'>
+<?php
+
+    echo "
+    <div class='container'>
+    <table border='1'>
     <tr>
-    Indicateur des colonnes :
     <th>Id<th>
     <th>Nom</th>
     <th>Batiment</th>
@@ -59,7 +71,7 @@ print_r($_POST);//contient le login et le mot de passe de celui ou celle qui s'e
     </tr>
     </br>
     </br>
-    Indicateur des lignes: 
+    
 
     " ;
 
