@@ -100,12 +100,11 @@ $type=$resulta['type'];
 if(isset($_POST['push'])){
         
         // set the PDO error mode to exception
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO 'annuaire_comite_alerte' ('nom', 'batiment', 'etage', 'fixe', 'portable', 'niveau', 'fonction', 'type')
-        VALUES (:$nom, :$batiment, :$etage, :$fixe, :$niveau, :$fonction, :$type)";
+    
         // on utilise  exec() car la variable ne retourne rien 
-        $result=$dbh->prepare($sql);
-        $result->execute(['nom'=> $nom,'batiment'=> $batiment,'etage' => $etage,'fixe' => $fixe,'portable'=> $portable,'niveau' => $niveau,'fonction' => $fonction,'type' => $type]);
+        $result=$dbh->prepare("INSERT INTO 'annuaire_comite_alerte' ('nom', 'batiment', 'etage', 'fixe', 'portable', 'niveau', 'fonction', 'type')
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?");
+        $result->execute(array($_POST['nom'],$_POST['batiment'],$_POST['etage'],$_POST['fixe'],$_POST['fonction'],$_POST['portable'],$_POST['niveau'],$_POST['type']));
         echo "New record created successfully";
         }
    

@@ -66,31 +66,38 @@ Password:
         $login=$_POST['login'];
         $mdp=$_POST['mdp'];
 
+
+
+ //affichage admin 
+ if ($req=$dbh->query("SELECT '$login',admin_or_not FROM gestion_des_comptes WHERE admin_or_not=1")){
+    echo "connecté en tant qu'admin, bienvenue employé: ".$login." ! ";
+    //variable pour les autres pages qui gèrera l'affichage 
+    $_SESSION['admin']="yes";
+}
+elseif($req=$dbh->query("SELECT '$login',admin_or_not FROM gestion_des_comptes WHERE admin_or_not=0")){
+    //affichage user
+    echo "connecté en tant qu'utilisateur, bienvenue employé: ".$login." ! ";
+    $_SESSION['admin']="no";
+}
+
+
+
+
+
 if($_POST['login'] && $_POST['mdp']){
         echo"</br>";
         sleep(1);
         sleep(1);    
         sleep(1);
-        include('Modification_Annuaire.php');
+        header('Location: Modification_Annuaire.php');
         //formulaire qui fera que l'utilisateur pourra voir des contacts snas les modifier//
         $uti=$_POST['mdp'];
-         
-        //affichage admin 
-        if ($req=$dbh->query("SELECT '$login',admin_or_not FROM gestion_des_comptes WHERE admin_or_not=1")){
-            echo "connecté en tant qu'admin, bienvenue employé: ".$login." ! ";
-            //variable pour les autres pages qui gèrera l'affichage 
-            $_SESSION['admin']="yes";
-        }
-        elseif($req=$dbh->query("SELECT '$login',admin_or_not FROM gestion_des_comptes WHERE admin_or_not=0")){
-            //affichage user
-            echo "connecté en tant qu'utilisateur, bienvenue employé: ".$login." ! ";
-            $_SESSION['admin']="no";
-        }
         
     }
 
-else{
-        echo"erreur vous devez saisir des identifiants valides, vous avez peut être fait une erreur de syntaxe ;) ";
+if($_POST['login']!=$login && $_POST['mdp']!=$mdp){
+        
+    echo "erreur vous devez saisir des identifiants valides, vous avez peut être fait une erreur de syntaxe";
     }      
 
 ?>
