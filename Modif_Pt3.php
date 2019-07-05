@@ -104,8 +104,9 @@ if(isset($_POST['push'])){
         // on utilise  exec() car la variable ne retourne rien 
         $result=$dbh->prepare("INSERT INTO 'annuaire_comite_alerte' ('nom', 'batiment', 'etage', 'fixe', 'portable', 'niveau', 'fonction', 'type')
         VALUES (?, ?, ?, ?, ?, ?, ?, ?");
-        $result->execute(array($_POST['nom'],$_POST['batiment'],$_POST['etage'],$_POST['fixe'],$_POST['fonction'],$_POST['portable'],$_POST['niveau'],$_POST['type']));
+        $result->execute(array($nom,$batiment,$etage,$fixe,$fonction,$portable,$niveau,$type));
         echo "New record created successfully";
+        echo"<li><a href='http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php'>Cliquez ici pour retourner sur la liste</a></li>";
         }
    
 else{

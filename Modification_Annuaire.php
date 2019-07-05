@@ -14,6 +14,8 @@ print_r($_POST);//contient le login et le mot de passe de celui ou celle qui s'e
 <!-- mettre une condition si session null ou pas -->
 <li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
 <head>
+<link rel ="stylesheet" href="Cpam_CPA/bootstrap.min.css">
+<link rel="stylesheet"  href="Cpam_CPA/style.css">
 </head>
 
 <body>
