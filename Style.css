@@ -1,4 +1,6 @@
-body{
+body{ 
+    background-image: linear-gradient(#a6a6a6,#bfbfbf,#cccccc);
+    background-repeat:repeat;
     
 }
 
@@ -21,4 +23,17 @@ body{
 #deco{
     text-align:right;
 
+}
+
+
+
+/*tableau*/
+.container{
+    
+    background-image: linear-gradient(#f2f2f2,#e6e6e6);
+}
+
+
+.btn_btn-default_btn-lg{
+    color:grey;
 }

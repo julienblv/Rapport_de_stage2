@@ -39,6 +39,10 @@ session_start();
 
 <a href="http://localhost/Dossier%20Php/Cpam_CPA/Numeros_importants.json" download>Téléchargez le Json ici</a>
 
+<br/>
+
+<a href="http://localhost/Dossier%20Php/Cpam_CPA/convertcsv.CSV" download>Téléchargez le CSV ici</a>
+
 <?php
 
 
@@ -89,7 +93,7 @@ session_start();
         
     echo "
       
-    <td><input type='submit' value='".$_POST['id']."' name='id'/></td>";
+    <td><input type='submit' class='btn btn-default btn-lg' value='".$_POST['id']."' name='id'/></td>";
     
 ?>
     </form>
@@ -106,13 +110,19 @@ echo
 <td>".$resultat['fonction']."</td></a>
 <td>".$resultat['niveau']."</td></a>
 <td>".$resultat['type']."</td></a>
+<td></td></a>
 <td></td></a>";
 
 
 if ($_SESSION['admin']=="yes"){
     echo 
     "<td><form method='POST' action='Modif_Pt3.php?id='".$_POST['id']."'>
-    <input type='submit' value='Modifier le contact".$_POST['id']." ?'/></td></a>
+    <input type='submit' class='btn btn-default btn-lg' value='Modifier ?".$_POST['id']." ?'/></td></a>
+    </form>
+
+    <td>
+    <form method='POST' action='Delete.php?id='".$_POST['id']."'>
+    <input type='submit' class='btn btn-default btn-lg' value='Supprimer ?".$_POST['id']." ?'/></td></a>
     </form>";
 }
 
