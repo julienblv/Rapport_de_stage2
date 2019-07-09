@@ -4,10 +4,10 @@ body{
     
 }
 
-
+/***********************************************PAGE MODIFICATION ANNUAIRE**************************************************/
 .container-fluid{
     background-color: aqua;
-    background-image: linear-gradient(#0000cc,#003399, #2952a3,#1a66ff,#5c85d6); 
+    background-image: linear-gradient(#0000cc,#003399, #2952a3,#1a66ff); 
 }
 
 
@@ -21,19 +21,49 @@ body{
 }
 
 #deco{
+
     text-align:right;
 
 }
 
 
 
+.liens{
+    text-align:left;
+
+}
+
+.lien-color{
+color:white;
+}
+
+
+.colotxttab{
+    color:white;
+}
+
 /*tableau*/
 .container{
     
     background-image: linear-gradient(#f2f2f2,#e6e6e6);
+   
 }
 
 
 .btn_btn-default_btn-lg{
     color:grey;
 }
+
+
+/*Txt gros titre*/
+.txttitre{
+    color:white;
+    margin-left:42%;
+}
+
+
+.littlespace{
+    margin-left:35px;
+}
+
+/****************************************************************************************************/
