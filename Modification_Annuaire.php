@@ -25,15 +25,14 @@
         <h3 id="h1">Modification_Annuaire</h3>
     </div>
 
-
+<br/>
     <div class='liens'>    
-        <a  class="lien-color" href="http://localhost/Dossier%20Php/Cpam_CPA/Numeros_importants.json" download>Téléchargez le Json ici</a>
-            <div id = "deco">
-                <a  class="lien-color" href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a>
-            </div>
-        <a class="lien-color" href="http://localhost/Dossier%20Php/Cpam_CPA/convertcsv.CSV" download>Téléchargez le CSV ici</a>
-            <br>
-            <br>
+    <li id='liens'><a  class="colotxttab" href="http://localhost/Dossier%20Php/Cpam_CPA/Numeros_importants.json" download>Téléchargez le Json ici</a></li>
+           
+            <li id='liens'><a  class="colotxttab" href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
+        
+    <li id='liens'><a class="colotxttab" href="http://localhost/Dossier%20Php/Cpam_CPA/convertcsv.CSV" download>Téléchargez le CSV ici</a></li>
+    <br/>
     </div>
 
 
