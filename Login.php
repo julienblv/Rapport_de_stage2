@@ -17,7 +17,7 @@ $_SESSION['admin'];
 
 
 <head>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
+
 
 <link rel ="stylesheet" href="http://localhost/Dossier%20Php/Cpam_CPA/bootstrap.min.css">
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
@@ -26,25 +26,37 @@ $_SESSION['admin'];
 
 <body>
 
-<h1> Bienvenue sur l'application CPAM PCA </h1>
-<h3>Veuillez vous connecter avec les identifiants qui vous on été distribués au préalable</h3>
+<div class="container-fluid">
+    <br/>
+<h1 class="txttitre3"> Bienvenue sur l'application CPAM PCA </h1>
+<br/>
 
+</div>
+
+<div class="txtblock3">
 <form method="POST" action= "Login.php">
-
-Login:
+<br/>
+<br/>
+<b>Login </b>
 <input type = 'txtbox' name='login'>
-
-Password:
+<br/>
+<br/>
+<b>Password </b>
 <input type = 'password'name='mdp'>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="password">
+<b>Vôtre CPAM </b>
 
-Vôtre CPAM :
 <select name="id_cpam">
     <optgroup label="id_cpam">
         <option value="id_cpam">Haute-Garonne_(31)</option>
         <option value="id_cpam">Tarn_et_Garonne_(82)</option>
         <option value="id_cpam">Loire_Atlantique_(44)</option>
-
-
+</div>
+<div class='txtblock'>
 <input type = 'submit' style='margin-top :100px'>
 
 

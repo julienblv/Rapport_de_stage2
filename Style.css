@@ -119,3 +119,46 @@ width:500px;
 
 
 /***********************************************PAGE MODIF**************************************************/
+
+
+.txtblock2{
+    height:500px;
+    width:400px;
+    margin-top:50px;
+    text-align:center;
+    background-color:white;
+    margin-left:37%;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.button_center2{
+    margin-top:20px;
+    margin-left:45.5%;
+}
+
+/****************************************************************************************************/
+
+
+/***********************************************PAGE LOGIN**************************************************/
+
+
+
+.txttitre3{
+    color:white;
+    margin-left:30%;
+}
+
+
+.txtblock3{
+    height:700px;
+    width:400px;
+    margin-top:50px;
+    text-align:center;
+    background-color:white;
+    margin-left:37%;
+    border-radius: 10px 10px 10px 10px
+}
+
+.password{
+    margin-top:-150px;
+}
