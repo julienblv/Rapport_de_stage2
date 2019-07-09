@@ -67,3 +67,32 @@ color:white;
 }
 
 /****************************************************************************************************/
+
+
+/***********************************************PAGE SHOW**************************************************/
+ 
+/* réutilisation de txttitre*/
+/*réutilisation de container-fluid*/
+
+.liens{
+    padding:0;
+    margin:0;
+    text-align:center;
+  
+}
+#liens{
+display:table-cell;
+width:500px;
+}
+
+
+
+.txttitre2{
+    color:white;
+    margin-left:43.5%;
+}
+
+.txtblock{
+    margin-top:50px;
+    text-align:center;
+}
