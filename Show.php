@@ -27,13 +27,14 @@ $_SESSION['id']=$_POST['id'];
 <li id='liens'><a class="colotxttab" href="http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php"> Modifier le contact ?</a></li>
 <li id='liens'><a class="colotxttab" href="http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php"> Retour à la liste ?</a></li>
 <br/>
-
 </div>
 
 </div>
+
 
 
 <form method="POST" action="Modif_Pt3.php?id='<?php $_POST['id']?>'"> 
+
 
 
 <?php
@@ -63,14 +64,14 @@ $req=$dbh->query("SELECT * FROM annuaire_comite_alerte WHERE id like '$id'");
 
 while($resultat = $req->fetch()){
     echo "<div class='txtblock'>";
-    echo "Nom: ". $resultat['nom']."<br><br>";
-    echo "batiment: ". $resultat['batiment']."<br><br>";
-    echo "etage: ". $resultat['etage']."<br><br>";
-    echo "fixe: ". $resultat['fixe']."<br><br>";
-    echo "portable: ". $resultat['portable']."<br><br>";
-    echo "niveau: ". $resultat['niveau']."<br><br>";
-    echo "fonction: ". $resultat['fonction']."<br><br>";
-    echo "type: ". $resultat['type']."<br><br></div>";
+    echo "<b class='txtalin'><br/>Nom : </b>". $resultat['nom']."<br><br>";
+    echo "<b>batiment : </b>". $resultat['batiment']."<br><br>";
+    echo "<b>etage : </b>". $resultat['etage']."<br><br>";
+    echo "<b>fixe : </b>". $resultat['fixe']."<br><br>";
+    echo "<b>portable : </b>". $resultat['portable']."<br><br>";
+    echo "<b>niveau : </b>". $resultat['niveau']."<br><br>";
+    echo "<b>fonction : </b>". $resultat['fonction']."<br><br>";
+    echo "<b>type : ". $resultat['type']."<br><br></div>";
 }
 
 ?>
@@ -83,11 +84,10 @@ while($resultat = $req->fetch()){
 ?>
 
 
-
-
-
-
+<div class="button_center">
 <input type="Submit" value="modifier le contact">
+</div>
+
 </form>
 
 

@@ -1,5 +1,5 @@
 body{ 
-    background-image: linear-gradient(#a6a6a6,#bfbfbf,#cccccc);
+    background-color: #bfbfbf;
     background-repeat:repeat;
     
 }
@@ -16,9 +16,6 @@ body{
 }
 
 
-#izitxt{
-    color:grey;
-}
 
 #deco{
 
@@ -93,6 +90,32 @@ width:500px;
 }
 
 .txtblock{
-    margin-top:50px;
+    height:400px;
+    width:300px;
+    margin-top:100px;
+    text-align:center;
+    background-color:white;
+    margin-left:40%;
+    border-radius: 10px 10px 10px 10px
+}
+
+.button_center{
+    margin-top:40px;
     text-align:center;
 }
+
+.txtzone{
+    
+    background-color:white;
+   
+}
+
+.txtalin{
+    margin-top:100px;
+}
+
+
+/****************************************************************************************************/
+
+
+/***********************************************PAGE MODIF**************************************************/
