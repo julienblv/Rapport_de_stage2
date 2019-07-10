@@ -58,14 +58,14 @@ $req=$dbh->query("SELECT * FROM annuaire_comite_alerte WHERE id like '$id'");
 
 while($resultat = $req->fetch()){
     echo "<div class='txtblock'>";
-    echo "<b class='txtalin'><br/>Nom : </b>". $resultat['nom']."<br><br>";
-    echo "<b>batiment : </b>". $resultat['batiment']."<br><br>";
-    echo "<b>etage : </b>". $resultat['etage']."<br><br>";
-    echo "<b>fixe : </b>". $resultat['fixe']."<br><br>";
-    echo "<b>portable : </b>". $resultat['portable']."<br><br>";
-    echo "<b>niveau : </b>". $resultat['niveau']."<br><br>";
-    echo "<b>fonction : </b>". $resultat['fonction']."<br><br>";
-    echo "<b>type : ". $resultat['type']."<br><br></div>";
+    echo "<b class='txtalin'><br/><p>Nom : </b>". $resultat['nom']."</p>";
+    echo "<p><b>batiment : </b>". $resultat['batiment']."</p>";
+    echo "<p><b>etage : </b>". $resultat['etage']."</p>";
+    echo "<p><b>fixe : </b>". $resultat['fixe']."</p>";
+    echo "<p><b>portable : </b>". $resultat['portable']."</p>";
+    echo "<p><b>niveau : </b>". $resultat['niveau']."</p>";
+    echo "<p><b>fonction : </b>". $resultat['fonction']."</p>";
+    echo "<p><b>type : ". $resultat['type']."</p></div>";
 }
 
 ?>

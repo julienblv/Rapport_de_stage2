@@ -4,6 +4,8 @@ session_save_path();
 session_start();
 if(isset($_POST) && !empty($_POST['id']))
 {
+    
+$_SESSION['id']=$_POST['id'];
     extract($_POST);
 }
 
@@ -14,22 +16,26 @@ if(isset($_POST) && !empty($_POST['id']))
 <html lang="fr">
 <head>
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php"> Modifier le contact ?</a></li>
-<li><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php"> Retour à la liste ?</a></li>
+<link rel ="stylesheet" href="http://localhost/Dossier%20Php/Cpam_CPA/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"  href="Style.css" type="text/css">
 </head>
 
 
 
 <body>
+<div class="container-fluid">
+    <div class="txttitre">
+        <h1 id="h1"><div class="littlespace">CPAM PCA</div></h1>
+        <h3 id="h1">Modification_Annuaire</h3>
+    </div>
 
-<h1> CPAM PCA </h1>
-<h3>Show</h3>
+    <li id='liens'><a href="http://localhost/Dossier%20Php/Cpam_CPA/Login.php"> Deconnexion ?</a></li>
+<li id='liens'><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modif_Pt3.php"> Modifier le contact ?</a></li>
+<li id='liens'><a href="http://localhost/Dossier%20Php/Cpam_CPA/Modification_Annuaire.php"> Retour à la liste ?</a></li>
 
+</div>
 
-
-
-<h3>Supprimer le contact ?" :</h3>
 
 
 
@@ -61,14 +67,15 @@ $dbh = new PDO('mysql:host=localhost;dbname=annuaire', $user, $pass);
 $req=$dbh->query("SELECT * FROM annuaire_comite_alerte WHERE id like '$id'");
 
 while($resultat = $req->fetch()){
-    echo "Nom: ". $resultat['nom']."<br><br>";
-    echo "batiment: ". $resultat['batiment']."<br><br>";
-    echo "etage: ". $resultat['etage']."<br><br>";
-    echo "fixe: ". $resultat['fixe']."<br><br>";
-    echo "portable: ". $resultat['portable']."<br><br>";
-    echo "niveau: ". $resultat['niveau']."<br><br>";
-    echo "fonction: ". $resultat['fonction']."<br><br>";
-    echo "type: ". $resultat['type']."<br><br>";
+    echo "<div class='txtblock4'>";
+    echo "<b class='txtalin'><br/><p>Nom : </b>". $resultat['nom']."</p>";
+    echo "<p><b>batiment : </b>". $resultat['batiment']."</p>";
+    echo "<p><b>etage : </b>". $resultat['etage']."</p>";
+    echo "<p><b>fixe : </b>". $resultat['fixe']."</p>";
+    echo "<p><b>portable : </b>". $resultat['portable']."</p>";
+    echo "<p><b>niveau : </b>". $resultat['niveau']."</p>";
+    echo "<p><b>fonction : </b>". $resultat['fonction']."</p>";
+    echo "<p><b>type : ". $resultat['type']."</p></div>";
 }
 
 
@@ -79,9 +86,10 @@ while($resultat = $req->fetch()){
 
 
 
-
+<div class="button_center">
 <input type="Submit" value="Annuler  ?">
 </form>
+</div>
 
 <form method="POST" action="Delete.php?id='<?php $_POST['id']?>'"> 
 <?php
@@ -90,9 +98,14 @@ $req=$dbh->query("DELETE FROM annuaire_comite_alerte WHERE id like '$id'");
 
 ?>
 
-
+<div class="button_center">
 <input type="Submit" value="supprimer le contact ?">
 </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
 </body>
