@@ -113,12 +113,12 @@ echo
 if ($_SESSION['admin']=="yes"){
     echo 
     "<td class='container'><form method='POST' action='Modif_Pt3.php?id='".$_POST['id']."'>
-    <input type='submit' class='btn btn-default btn-lg' value='Modifier ? (".$_POST['id']." )'/></td></a>
+    <input type='submit' class='btn btn-default btn-lg' value='Modifier ?'/></td></a>
     </form>
 
     <td>
     <form method='POST' action='Delete.php?id='".$_POST['id']."'>
-    <input type='submit' class='btn btn-default btn-lg' value='Supprimer ? (".$_POST['id']." )'/></td></a>
+    <input type='submit' class='btn btn-default btn-lg' value='Supprimer ?'/></td></a>
     </form>";
 }
 
